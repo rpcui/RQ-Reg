@@ -1,0 +1,49 @@
+data:
+  path: ""  # path for dataset
+  code_path: ""  # path for RQ codebook
+  codebook_layer: 3
+  codebook_size: [48, 48, 48]
+  method: "kmeans"
+  vocab_size: 146
+  feature_col:
+    sparse: [
+      "query_length", "item_length"
+    ]
+    seq: [
+      "query0", "query1", "query2", "query3", "query4", "query5", "query6", "query7", "query8", "query9",
+      "item0", "item1", "item2", "item3", "item4", "item5", "item6", "item7", "item8", "item9"
+    ]
+    dense: []
+    label: ["duration"]
+  embedding_size:
+    sparse: [
+      11, 11
+    ]
+    seq: [9778, 116883]
+    dense: []
+  seq_feature_index: [0, 10, 20]
+
+model:
+  d_model: 512
+  num_layers: 1
+  decoder_layers: 2
+  dropout: 0.1
+  embedding_dim: 64
+  n_head: 8
+
+train:
+  batch_size: 256
+  lr: 0.0005
+  lambda1: 1.0
+  lambda2: 0.1
+  gamma: 2.0
+  eta: 0.01
+  delta: 10.0
+  tau: 5.0
+  pivot: 0.2
+  temperature: 2.0
+  num_epoch: 50
+  log_interval: 100
+  debug: true
+  device: cuda
+  save: ""  # save path for checkpoints
